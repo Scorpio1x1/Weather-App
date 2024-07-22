@@ -1,0 +1,134 @@
+body {
+  background: linear-gradient(90deg, #a8fa9c 0%, #42e2ae 35%, #1eb1e2 100%);
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+}
+
+@media (width <= 360px) {
+  .app--box {
+    background: #000;
+    height: 100vh;
+  }
+}
+
+.app--box {
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 1%;
+  grid-template-rows: repeat(4, 20vh);
+  grid-template-columns: 20vh 40vh 20vh;
+  width: 80vh;
+  height: 80vh;
+  margin: 100px auto auto;
+  display: grid;
+}
+
+.city {
+  background: #fff;
+  border: 1px solid #000;
+  grid-area: 2 / 2 / 3 / 3;
+  height: 10vh;
+}
+
+.city h1 {
+  text-align: center;
+  text-align: center;
+  vertical-align: middle;
+  background: #fff;
+  margin: auto;
+  font-family: Franklin Gothic Medium, Arial Narrow, Arial, sans-serif;
+  line-height: 10vh;
+}
+
+.temp {
+  background: #fff;
+  border: 1px dotted #000;
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.temp img {
+  background: #fff;
+  width: 10vh;
+  height: 10vh;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.temp h1, .temp p {
+  text-align: center;
+  background: #fff;
+}
+
+.h1--title {
+  background: #fff;
+  grid-area: 1 / 2 / 2 / 3;
+  margin: auto;
+}
+
+.weather--preview {
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  background: #fff;
+  border: 1px solid #000;
+  grid-area: 4 / 2 / 5 / 3;
+  grid-template-rows: repeat(3, 5vh);
+  grid-template-columns: repeat(4, 10vh);
+  display: grid;
+}
+
+.weather--preview .day-1 {
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-area: 1 / 1 / 5 / 3;
+  grid-template-rows: repeat(2, 10vh);
+  grid-template-columns: 6vh 8vh 6vh;
+  display: grid;
+}
+
+.weather--preview .day-1 img {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 6vh;
+  height: 6vh;
+}
+
+.weather--preview .day-1 h1 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.weather--preview .day-1 p {
+  text-align: center;
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.weather--preview .day-2 {
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  border-left: 2px dotted #000;
+  grid-area: 1 / 5 / 5 / 3;
+  grid-template-rows: repeat(2, 10vh);
+  grid-template-columns: 6vh 8vh 6vh;
+  display: grid;
+}
+
+.weather--preview .day-2 img {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 6vh;
+  height: 6vh;
+}
+
+.weather--preview .day-2 h1 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.weather--preview .day-2 p {
+  text-align: center;
+  grid-area: 2 / 2 / 3 / 3;
+}
+/*# sourceMappingURL=index.78cc32dd.css.map */
