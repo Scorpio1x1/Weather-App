@@ -733,7 +733,7 @@ function getLocation() {
 }
 function getCelcius(fTemp) {
     const cTemp = 5 / 9 * (fTemp - 32);
-    const temp = Math.round(cTemp * 100) / 100;
+    const temp = Math.round(cTemp);
     return temp;
 }
 async function showPosition(position) {
@@ -761,11 +761,15 @@ async function showPosition(position) {
     for(let i = 0; i < iconArr.length; i++)if (data.days[0].icon === iconArr[i][0]) imgEl.src = iconArr[i][1];
     for(let i = 0; i < iconArr.length; i++)if (data.days[1].icon === iconArr[i][0]) prev1 = iconArr[i][1];
     for(let i = 0; i < iconArr.length; i++)if (data.days[2].icon === iconArr[i][0]) prev2 = iconArr[i][1];
+    const windSpeed = +data.days[0].windspeed;
+    const humidity = +data.days[0].humidity;
+    const feelsLikeF = +data.days[0].feelslike;
+    const feelsLike = getCelcius(feelsLikeF);
     // Preview day 1
     //imgEl.src = sunny;
-    (0, _tempViewDefault.default).render(temp, data.description);
-    (0, _locationViewDefault.default).render(data.timezone);
-    (0, _previewViewDefault.default).render(prev1, prev2, date1, date2, temp2, temp3);
+    (0, _tempViewDefault.default).render(temp, data.description, Math.round(feelsLike), Math.round(windSpeed), Math.round(humidity));
+//locationView.render(data.timezone);
+// previewView.render(prev1, prev2, date1, date2, temp2, temp3);
 }
 //console.log(cords)
 const getTemp = async function() {
@@ -864,14 +868,17 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class tempView {
     _parentElement = document.querySelector(".temp");
-    _markup(temp, description) {
+    _markup(temp, description, feelsLike = 12, wind = 12, humidity = 12) {
         return `
-                <h1>${temp} C</h1>
+                <h1>${temp}\xb0</h1>
                 <p>${description}</p>
+                    <p class="feelsLike"><span class="info--span">Feels Like</span>${feelsLike}</p>
+                    <p class="wind"><span class="info--span">Wind Speed</span>${wind}</p>
+                    <p class="humidity"><span class="info--span">Humidity</span>${humidity}</p>
         `;
     }
-    render(temp, description = "") {
-        this._parentElement.insertAdjacentHTML("beforeend", this._markup(temp, description));
+    render(temp, description = "", feelsLike, wind, humidity) {
+        this._parentElement.insertAdjacentHTML("beforeend", this._markup(temp, description, feelsLike, wind, humidity));
     }
 }
 exports.default = new tempView();
@@ -1000,12 +1007,12 @@ class previewView {
             <div class="day-1">
                     <img src="${icon1}">
                     <h1>${date1}</h1>
-                    <p>${temp1} C</p>
+                    <p>${temp1} \xb0</p>
                 </div>
                 <div class="day-2">
                     <img src="${icon2}">
                     <h1>${date2}</h1>
-                    <p>${temp2} C</p>
+                    <p>${temp2} \xb0</p>
                 </div>
         `;
     }

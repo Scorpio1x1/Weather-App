@@ -68,7 +68,7 @@ function getLocation() {
 
 function getCelcius(fTemp) {
     const cTemp = 5 / 9 * (fTemp - 32)
-    const temp = (Math.round(cTemp * 100) / 100);
+    const temp = Math.round(cTemp);
     return temp;
 }
 
@@ -107,14 +107,18 @@ async function showPosition(position) {
         }
     }
 
+    const windSpeed = +data.days[0].windspeed;
+    const humidity = +data.days[0].humidity;
+    const feelsLikeF = +data.days[0].feelslike;
+    const feelsLike = getCelcius(feelsLikeF);
     // Preview day 1
 
 
 
     //imgEl.src = sunny;
-    tempView.render(temp, data.description);
-    locationView.render(data.timezone);
-    previewView.render(prev1, prev2, date1, date2, temp2, temp3);
+    tempView.render(temp, data.description, Math.round(feelsLike), Math.round(windSpeed), Math.round(humidity));
+    //locationView.render(data.timezone);
+    // previewView.render(prev1, prev2, date1, date2, temp2, temp3);
 
 
 

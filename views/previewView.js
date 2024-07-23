@@ -6,12 +6,12 @@ class previewView {
             <div class="day-1">
                     <img src="${icon1}">
                     <h1>${date1}</h1>
-                    <p>${temp1} C</p>
+                    <p>${temp1} °</p>
                 </div>
                 <div class="day-2">
                     <img src="${icon2}">
                     <h1>${date2}</h1>
-                    <p>${temp2} C</p>
+                    <p>${temp2} °</p>
                 </div>
         `
     }
